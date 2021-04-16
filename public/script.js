@@ -4,7 +4,11 @@
 const socket = io('/');
 const videoGrid = document.getElementById('video-grid')
 // console.log(videoGrid)
-var peer = new Peer();
+const peer = new Peer(undefined, {
+  path: '/peerjs',
+  host: '/',
+  port: '443'
+})
 
 let myVideoStream;
 const myVideo = document.createElement('video');
