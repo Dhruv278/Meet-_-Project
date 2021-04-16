@@ -1,14 +1,10 @@
 
 
 // const { Socket } = require("node:dgram");
-const socket = io('/');
+const socket = io();
 const videoGrid = document.getElementById('video-grid')
 // console.log(videoGrid)
-const peer = new Peer(undefined, {
-  path: '/peerjs',
-  host: '/',
-  port: '443'
-})
+const peer = new Peer()
 
 let myVideoStream;
 const myVideo = document.createElement('video');
@@ -19,7 +15,7 @@ navigator.mediaDevices.getUserMedia({
   }).then(stream => {
     myVideoStream = stream;
     addVideoStream(myVideo, stream)
-    // console.log(st)
+    console.log("hello")
     peer.on('call', call => {
       call.answer(stream)
       const video = document.createElement('video')
@@ -42,7 +38,7 @@ peer.on('open', id => {
 const connectToNewUser = (userId, stream) => {
     console.log(userId)
     const call = peer.call(userId, stream)
-    // call.answer(stream)
+    call.answer(stream)
     console.log('helllllllllll')
     const video = document.createElement('video')
     // video.muted=true
