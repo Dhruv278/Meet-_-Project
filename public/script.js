@@ -38,7 +38,7 @@ peer.on('open', id => {
 const connectToNewUser = (userId, stream) => {
     console.log(userId)
     const call = peer.call(userId, stream)
-    call.answer(stream)
+    // call.answer(stream)
     console.log('helllllllllll')
     const video = document.createElement('video')
     // video.muted=true
