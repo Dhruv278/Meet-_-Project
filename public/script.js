@@ -1,10 +1,12 @@
 
 
+
 // const { Socket } = require("node:dgram");
 const socket = io();
 const videoGrid = document.getElementById('video-grid')
 // console.log(videoGrid)
 const peer = new Peer()
+
 
 let myVideoStream;
 const myVideo = document.createElement('video');
@@ -15,7 +17,8 @@ navigator.mediaDevices.getUserMedia({
   }).then(stream => {
     myVideoStream = stream;
     addVideoStream(myVideo, stream)
-    console.log("hello")
+    // name=prompt('Enter Your name')
+    // console.log(name)
     peer.on('call', call => {
       call.answer(stream)
       const video = document.createElement('video')
@@ -31,7 +34,7 @@ navigator.mediaDevices.getUserMedia({
 })
 
 peer.on('open', id => {
-    // console.log(id)
+    console.log("join")
     socket.emit('join-room', ROOM_ID, id);
 })
 

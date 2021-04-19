@@ -16,6 +16,9 @@ app.get('/',(req,res)=>{
 })
 app.get('/:room',(req,res)=>{
     // console.log(req.params.room)
+    // const name=prompt('hello')
+    // const name= Windows.prompt("Name ")
+    // console.log(name)
     res.status(200).render('room',{roomId:req.params.room})
 })
 
